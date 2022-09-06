@@ -1,0 +1,46 @@
+{
+  "name": "${_BUILD_PACKAGE_NAME}.dnp.dappnode.eth",
+  "version": "0.1.0",
+  "shortDescription": "Ethereum client on the efficiency frontier, written in Go",
+  "description": "Erigon is a next generation Ethereum client that introduces several new concepts:\n\n* A modular client design, enabling parallelized development of the client\n\n* New (`flat`) model of storing Ethereum state, allowing a lower disk footprint\n\n* Preprocessing of data outside of the storage engine, making database write operations faster by a magnitude\n\n* Staged synchronization technique, allowing very fast synchronization",
+  "upstreamVersion": "${_BUILD_UPSTREAM_VERSION}",
+  "upstreamRepo": "ledgerwatch/erigon",
+  "upstreamArg": "UPSTREAM_VERSION",
+  "type": "service",
+  "chain": "ethereum",
+  "categories": ["Developer tools"],
+  "architectures": ["linux/amd64"],
+  "author": "DAppNode Association <admin@dappnode.io> (https://github.com/dappnode)",
+  "contributors": [
+    "Eduardo Antuña <eduadiez@gmail.com> (https://github.com/eduadiez)",
+    "Pablo Mendez <mendez4a@gmail.com> (https://github.com/pablomendezroyo)"
+  ],
+  "links": {
+    "homepage": "https://github.com/ledgerwatch/erigon",
+    "api": "http://${_BUILD_PACKAGE_NAME}.dappnode:8545",
+    "api-engine": "http://${_BUILD_PACKAGE_NAME}.dappnode:8551"
+  },
+  "mainService": "erigon",
+  "license": "GPL-3.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dappnode/DAppNodePackage-${_BUILD_PACKAGE_NAME}.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dappnode/DAppNodePackage-${_BUILD_PACKAGE_NAME}/issues"
+  },
+  "globalEnvs": [
+    {
+      "envs": ["CONSENSUS_CLIENT_PRATER"],
+      "services": ["erigon"]
+    }
+  ],
+  "exposable": [
+    {
+      "name": "Erigon JSON RPC",
+      "description": "JSON RPC endpoint for Erigon goerli",
+      "serviceName": "erigon",
+      "port": 8545
+    }
+  ]
+}
